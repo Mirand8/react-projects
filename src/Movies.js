@@ -17,7 +17,7 @@ const moviesDataSet = [
 ];
 
 
-function MoviesApp(){
+function Movies(){
 
 	const[movies, setMovies] = React.useState(moviesDataSet);
 
@@ -27,17 +27,18 @@ function MoviesApp(){
 	};
 
     return (
-		<div id='app' className='container'>
-			<div className="col">
-				<h1 className="text-center">Movies App</h1>
-				<div className="row">
-					<ul className="list-group">
-						{movies.map( (movie) => {
+		<>
+		<div className="col">
+			<h1 className="text-center">Movies App</h1>
+			<div className="row">
+				<ul className="list-group">
+					{
+						movies.map( (movie) => {
 							const {id, title} = movie;
 
 							return (
 								<li key={id} className="list-group-item d-flex justify-content-between align-items-center">
-									{movie.id}: {movie.title}
+									{id}: {title}
 									<div >
 										<button className="btn btn-danger"
 												onClick={() => remove(id)}>
@@ -46,16 +47,17 @@ function MoviesApp(){
 									</div>
 								</li>
 							)
-						})}
-					</ul>
-					<button className="btn btn-primary"
-							onClick={() => setMovies([])}>
-						Clear Movie List
-					</button>
-				</div>
+						})
+					}
+				</ul>
+				<button className="btn btn-primary"
+						onClick={() => setMovies([])}>
+					Clear Movie List
+				</button>
 			</div>
 		</div>
+		</>
     )
 };
 
-export default MoviesApp;
+export default Movies;

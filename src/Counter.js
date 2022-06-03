@@ -1,19 +1,25 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
-function CounterApp() {
+function Counter() {
 	const [number, setNumber] = useState(0);
 
+	useEffect( () => {
+		if(number > 0 || number < 0){
+			document.title = `Counter: ${number}`;
+		}
+	});
+
 	const incrementClickHandler = () => {
-		setNumber(number+1)
+		setNumber(number+1);
 	};
 
 	const decrementClickHandler = () => {
-		setNumber(number-1)
+		setNumber(number-1);
 	};
 
 	return (
-		<div id='app' className='container'>
+		<article>
 			<h1 className='text-center'>Counter App</h1>
 			<div className="col">
 				<div>
@@ -26,8 +32,8 @@ function CounterApp() {
 			</div>
 			<br />
 			<p className='fst-italic'>Click on '+' to increment and '-' to decrement</p>
-		</div>
+		</article>
 	);
-}
+};
 
-export default CounterApp;
+export default Counter;
